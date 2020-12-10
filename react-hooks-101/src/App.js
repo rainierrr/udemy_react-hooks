@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 const App = props => {
 
   const [state, setState] = useState(props)
+  const { name, price } = state
   const reset = () => {
     setState(props)
   }
@@ -11,18 +12,21 @@ const App = props => {
     console.log('This is like componentDidMount or componentDidUpdate')
   })
 
-  const renderPeriod = () => {
-    console.log('renderPeriod renders period.')
-    return '.'
-  }
+  useEffect(() => {
+    console.log('This is like componentDidMount')
+  },[])
+
+  useEffect(() => {
+    console.log('This callback is for name only')
+  },[name])
 
   return (
     <div>
-      <p>{state.name}</p>
-      <p>現在の値段は{state.price}{renderPeriod()}</p>
+      <p>{name}</p>
+      <p>現在の値段は{state.price}</p>
       <button onClick={() =>setState({...state, price: state.price + 1})}>+1</button>
       <button onClick={reset}>reset</button>
-      <input value={state.name} onChange={e => setState({...state, name: e.target.value})}/>
+      <input value={name} onChange={e => setState({...state, name: e.target.value})}/>
     </div>
   )
 }
