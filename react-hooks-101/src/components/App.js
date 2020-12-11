@@ -6,7 +6,7 @@ const App = props => {
   const [state, setState] = useState(props)
 
   return (
-    <div className='container'>
+    <div className='container　'>
       <h4>イベント作成フォーム</h4>
       <form>
         <div className='form-group'>
