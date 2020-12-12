@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-
+import { DELETE_EVENT } from '../actions'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import reducer from '../reducers'
@@ -25,7 +25,7 @@ const App = () => {
           {
             state.map((event, index) => {
               const id = event.id
-              const DELETE_EVENT = 'DELETE_EVENT'
+
               const handleClickDelete = () => {
                 if (window.confirm(`イベント(id=${id})を削除しても良いですか?`)) {
                   dispatch({
