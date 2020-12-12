@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react'
-import reducer from '../reducers'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const EventForm = ({state, dispatch}) => {
 
@@ -20,7 +20,7 @@ const EventForm = ({state, dispatch}) => {
 
   const deleteAllEvent = e => {
     e.preventDefault()
-    if (window.confirm("全てののイベントを本当に削除しても良いですか?")) {
+    if (window.confirm("全てのイベントを本当に削除しても良いですか?")) {
       dispatch({ type: 'DELETE_ALL_EVENTS' })
     }
   }

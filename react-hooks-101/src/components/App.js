@@ -25,10 +25,11 @@ const App = () => {
           {
             state.map((event, index) => {
               const id = event.id
+              const DELETE_EVENT = 'DELETE_EVENT'
               const handleClickDelete = () => {
-                if (window.confirm(`(id=${id})イベントを削除しても良いですか?`)) {
+                if (window.confirm(`イベント(id=${id})を削除しても良いですか?`)) {
                   dispatch({
-                    type: "DELETE_EVENT",
+                    type: DELETE_EVENT,
                     id
                   })
                 }
