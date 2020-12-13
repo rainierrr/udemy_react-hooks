@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import { DELETE_EVENT } from '../actions'
+import AppContext from '../contexts/AppContext'
 import reducer from '../reducers'
 import EventForm from './EventForm'
 import Events from './Events'
@@ -11,10 +11,12 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, [])
 
   return (
-    <div className="container">
+    <AppContext.Provider value={'Hello'}>
+      <div className="container">
       <EventForm state={state} dispatch={dispatch} />
       <Events state={state} dispatch={dispatch} />
     </div>
+    </AppContext.Provider>
   )
 }
 
