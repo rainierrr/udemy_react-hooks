@@ -18,12 +18,12 @@ const Events = () => {
               </tr>
             </thead>
             <tbody>
-              { state.map((event) => ( <Event event={event} key={event.id}/>  )) }
+              { state.events.map((event) => ( <Event event={event} key={event.id}/>  )) }
             </tbody>
           </table>
       </div>
     </>
   )
-
 }
+
 export default Events
