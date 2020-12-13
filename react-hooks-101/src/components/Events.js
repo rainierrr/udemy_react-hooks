@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { DELETE_EVENT } from '../actions'
 import AppContext from '../contexts/AppContext'
+import Event from './Event'
 
-const Events = ({state, dispatch}) => {
-  const value = useContext(AppContext)
+const Events = () => {
+  const { state } = useContext(AppContext)
   return (
       <>
       <div>
@@ -18,28 +18,7 @@ const Events = ({state, dispatch}) => {
               </tr>
             </thead>
             <tbody>
-              {
-                state.map((event, index) => {
-                  const id = event.id
-
-                  const handleClickDelete = () => {
-                    if (window.confirm(`イベント(id=${id})を削除しても良いですか?`)) {
-                      dispatch({
-                        type: DELETE_EVENT,
-                        id
-                      })
-                    }
-                  }
-                  return (
-                    <tr key={index}>
-                      <th>{id}</th>
-                      <th>{event.title}</th>
-                      <th>{event.body}</th>
-                      <th><button type="button" className="btn btn-danger" onClick={handleClickDelete}>削除</button></th>
-                    </tr>
-                  )
-                })
-              }
+              { state.map((event) => ( <Event event={event} key={event.id}/>  )) }
             </tbody>
           </table>
       </div>
