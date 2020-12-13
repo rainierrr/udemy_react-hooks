@@ -1,8 +1,13 @@
 import React, { useContext, useState } from 'react'
-import { DELETE_ALL_EVENTS, CREATE_EVENT } from '../actions'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import {
+  DELETE_ALL_EVENTS,
+  CREATE_EVENT,
+  ADD_OPERATION_LOG,
+  DELETE_ALL_OPERATION_LOGS
+} from '../actions'
+import { timeCurrentIso8601 } from '../utils'
 import AppContext from '../contexts/AppContext'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 const EventForm = () => {
   const { state, dispatch } = useContext(AppContext)
 	const [title, setTitle] = useState('')
@@ -16,6 +21,12 @@ const EventForm = () => {
      title,
      body
     })
+
+    dispatch({
+      type: ADD_OPERATION_LOG,
+      description: 'イベントを作成しました',
+      operatedAt: timeCurrentIso8601()
+     })
     setTitle('')
     setBody('')
   }
@@ -24,6 +35,11 @@ const EventForm = () => {
     e.preventDefault()
     if (window.confirm("全てのイベントを本当に削除しても良いですか?")) {
       dispatch({ type: DELETE_ALL_EVENTS })
+      dispatch({
+        type: ADD_OPERATION_LOG,
+        description: '全てのイベントを削除しました',
+        operatedAt: timeCurrentIso8601()
+       })
     }
   }
 
