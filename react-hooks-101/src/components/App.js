@@ -3,13 +3,15 @@ import AppContext from '../contexts/AppContext'
 import reducer from '../reducers'
 import EventForm from './EventForm'
 import Events from './Events'
+import OperationLogs from './OperationLogs'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 
 const App = () => {
   const initialState = {
-  events: []
+  events: [],
+  operationLogs: []
 }
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -18,6 +20,7 @@ const App = () => {
       <div className="container">
       <EventForm />
       <Events />
+      <OperationLogs />
     </div>
     </AppContext.Provider>
   )
